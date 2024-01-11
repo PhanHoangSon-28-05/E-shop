@@ -1,0 +1,25 @@
+body {
+    font-family: 'Damion', cursive;
+    font-family: 'Roboto', sans-serif;
+}
+
+.checkout-form label {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.checkout-form input {
+    font-size: 14px;
+    padding: 5px;
+    font-weight: 400;
+}
+
+.order-details label {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.order-details label {
+    font-size: 14px;
+    padding: 5px !important;
+}
