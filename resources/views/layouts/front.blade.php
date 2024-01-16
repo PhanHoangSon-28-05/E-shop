@@ -36,10 +36,14 @@
     <link rel="stylesheet" href="{{ asset('fontend/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fontend/css/owl.theme.default.min.css') }}">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
     {{-- Font awesome --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Damion&family=Roboto&display=swap" rel="stylesheet">
+
 
     <style>
         a {
@@ -84,6 +88,26 @@
     <script src="{{ asset('fontend/js/custom.js') }}"></script>
     <script src="{{ asset('fontend/js/checkout.js') }}"></script>
 
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script>
+        var availableTags = [];
+        $.ajax({
+            method: "GET",
+            url: "/product-list",
+            success: function(response) {
+                //console.log(response);
+                startAutocomplete(availableTags);
+            }
+        });
+
+        function startAutocomplete(availableTags) {
+
+            $("#search_product").autocomplete({
+                source: availableTags
+            });
+        }
+        </script>
 
     @if (session('status'))
         <script>

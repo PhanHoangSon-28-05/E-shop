@@ -31,13 +31,6 @@ class CheckoutController extends Controller
         return view('frontend.checkout', compact('cartitems'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly placeorder resource in storage.
@@ -57,21 +50,23 @@ class CheckoutController extends Controller
         $order->country = $request->input('country');
         $order->pincode = $request->input('pincode');
 
-
+        // to calculate the total price
         $total = 0;
         $cartitems_total = Cart::where('user_id', Auth::id())->get();
 
         foreach ($cartitems_total as $prod) {
             $total += $prod->products->selling_price;
         }
+
         $order->total_price = $total;
 
         $order->tracking_no = 'sharma' . rand(1111, 9999);
         $order->save();
 
         $cartitems = Cart::where('user_id', Auth::id())->get();
+
         foreach ($cartitems as $item) {
-            OrderItem::created(
+            OrderItem::create(
                 [
                     'order_id' => $order->id,
                     'prod_id' => $item->prod_id,
@@ -101,38 +96,10 @@ class CheckoutController extends Controller
 
         $cartitems = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartitems);
+
+        if ($request->input('payment_mode') == "Paid by Razorpay" || $request->input('payment_mode') == "Paid by to PayPal") {
+            return response()->json(['status' => "Order placed successfully"]);
+        }
         return redirect('/')->with('status', "Oder placed Successfully");
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="{{ asset('fontend/css/bootstrap5.css') }}">
     <link rel="stylesheet" href="{{ asset('fontend/css/cumtom.css') }}">
 
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     {{-- Font awesome--}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +58,28 @@
     <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script>
+        var availableTags = [];
+        $.ajax({
+            method: "GET",
+            url: "/product-list",
+            success: function(response) {
+                //console.log(response);
+                startAutocomplete(availableTags);
+            }
+        });
+
+        function startAutocomplete(availableTags) {
+
+            $("#search_product").autocomplete({
+                source: availableTags
+            });
+        }
+    </script>
+
     <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
 

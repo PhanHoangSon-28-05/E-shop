@@ -55,6 +55,51 @@
                                 </li>
                             @endif
                         @else
+                            {{-- <style>
+                            .dropdown {
+                              position: relative;
+                              display: inline-block;
+                            }
+                            
+                            .dropdown-content {
+                              display: none;
+                              position: absolute;
+                              background-color: #f9f9f9;
+                              min-width: 160px;
+                              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                              padding: 12px 16px;
+                              z-index: 1;
+                            }
+                            
+                            .dropdown:hover .dropdown-content {
+                              display: block;
+                            }
+                            </style>
+
+                            <div class="dropdown">
+                                <span>{{ Auth::user()->name }}</span>
+                                <div class="dropdown-content">
+                                <p>
+                                    <a class="dropdown-item" href="#">
+                                    My Profile
+                                    </a>
+                                </p>
+                                <p>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                </p>
+                                </div>
+                            </div> --}}
+
+
+
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,7 +121,6 @@
                                             @csrf
                                         </form>
                                     </li>
-
                                 </ul>
                             </li>
                         @endguest

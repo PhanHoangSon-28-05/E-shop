@@ -80,6 +80,9 @@
                                 <h4 class="px-2">
                                     Grand Total: <span class="float-end">{{ $orders->total_price }}</span>
                                 </h4>
+                                <h4 class="px-2">
+                                    Payment Mode: <span class="float-end">{{ $orders->payment_mode }}</span>
+                                </h4>
                             </div>
                         </div>
                     </div>

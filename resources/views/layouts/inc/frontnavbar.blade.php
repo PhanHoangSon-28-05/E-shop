@@ -1,6 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">E-Shop</a>
+        <div class="search-bar">
+            <form action="{{url('searchproduct')}}" method="POST">
+                @csrf
+                <div class="input-group">
+                    <input type="search" class="form-control" id="search_product" name="product_name" placeholder="Search products"  aria-describedby="basic-addon1">
+                    <button type="submit" class="input-group-text"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+        
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,6 +45,7 @@
                         </li>
                     @endif
                 @else
+                
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,3 +79,4 @@
 
     </div>
 </nav>
+<script src="{{ asset('fontend/js/bootstrap.bundle.js') }}"></script>
